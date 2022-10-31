@@ -1,11 +1,11 @@
 
 
-const OrderPageHistory = () => {
+const OrderHistoryPage = () => {
     return(
         <div>
-            <h1>OrderPageHistory</h1>
+            <h1>OrderHistoryPage</h1>
         </div>
     )
 }
 
-export default OrderPageHistory
+export default OrderHistoryPage
