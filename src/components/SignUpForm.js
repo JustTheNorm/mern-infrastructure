@@ -29,7 +29,7 @@ class SignUpForm extends Component {
         const user = await signUp(formData)
         console.log(user)
 
-    } catch{
+    } catch (error){
         this.setState({error: `Sign Up Failed - Try Again`})
     }
   }

@@ -96,6 +96,11 @@ code {
   background-color: var(--tan-1);
   border: .1vmin solid var(--tan-3);
   border-radius: 1vmin;
+  max-width: 35rem;
+  /* display:flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin: auto;
 }
 
 p.error-message {
