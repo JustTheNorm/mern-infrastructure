@@ -28,6 +28,8 @@ class SignUpForm extends Component {
         
         const user = await signUp(formData)
         console.log(user)
+        this.props.setUser()
+
 
     } catch (error){
         this.setState({error: `Sign Up Failed - Try Again`})

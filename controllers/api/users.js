@@ -1,4 +1,5 @@
 const User = require(`../../models/user`)
+const bcrypt = require('bcrypt');
 const jwt = require(`jsonwebtoken`)
 
 
@@ -16,6 +17,23 @@ const jwt = require(`jsonwebtoken`)
       res.status(400).json(`Bad Credentials`)
     }
   }
+  async function login(req, res) {
+    console.log(req.body)
+    // Baby step...
+    try{
+      // Find the user in the database
+      const user = await User.findOne({ email: req.body.email });
+      if (!user) throw new Error();
+      const match = await bcrypt.compare(req.body.password, user.password);
+      if (!match) throw new Error();
+      res.json( createJWT(user) );
+      // send token to client
+      // res.json(token)
+
+    } catch (err){
+      res.status(400).json(`Bad Credentials`)
+    }
+  }
 
   function createJWT(user){
     return jwt.sign(
@@ -28,6 +46,7 @@ const jwt = require(`jsonwebtoken`)
 
   module.exports = {
     create,
-    createJWT
+    createJWT,
+    login
   };
   
