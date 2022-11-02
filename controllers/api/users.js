@@ -35,6 +35,12 @@ const jwt = require(`jsonwebtoken`)
     }
   }
 
+  function checkToken(req, res) {
+    // req.user will always be there for you when a token is sent
+    console.log('req.user', req.user);
+    res.json(req.exp);
+  }
+
   function createJWT(user){
     return jwt.sign(
       {user},
@@ -47,6 +53,7 @@ const jwt = require(`jsonwebtoken`)
   module.exports = {
     create,
     createJWT,
-    login
+    login,
+    checkToken
   };
   

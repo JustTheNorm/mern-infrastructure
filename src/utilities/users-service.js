@@ -12,7 +12,7 @@ export async function signUp(userData) {
     localStorage.setItem("token", token)
     return getUser()
   }
-  
+
 export async function login(userData) {
   console.log(userData)
     // Delegate the network request code to the users-api.js API module
@@ -47,6 +47,14 @@ export async function login(userData) {
     return token ? JSON.parse(atob(token.split(".")[1])).user : null;
     }
 
-    export function logOut() {
+  export function logOut() {
       localStorage.removeItem('token')
+    }
+
+    export function checkToken() {
+      // Just so that you don't forget how to use .then
+      return usersAPI.checkToken()
+        // checkToken returns a string, but let's
+        // make it a Date object for more flexibility
+        .then(dateStr => new Date(dateStr));
     }
