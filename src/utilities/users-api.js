@@ -20,6 +20,7 @@ export async function signUp(userData) {
     throw new Error('Invalid Sign Up');
   }
 }
+
 export async function login(userData) {
   console.log(userData)
   // Fetch uses an options object as a second arg to make requests
